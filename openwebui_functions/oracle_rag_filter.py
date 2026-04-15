@@ -14,9 +14,6 @@ Installation:
 3. Paste this code and save
 4. Enable the filter for your models
 
-Author: Oracle AI Developer Hub
-Version: 1.0.0
-License: MIT
 """
 
 from pydantic import BaseModel, Field
