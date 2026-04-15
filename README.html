@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="agentic-rag-system">Agentic RAG System</h1>
+<h2 id="introduction">Introduction</h2>
+<p>An intelligent RAG (Retrieval Augmented Generation) system that uses an LLM agent to make decisions about information retrieval and response generation. The system processes PDF documents and can intelligently decide which knowledge base to query based on the user's question.</p>
+<img src="img/architecture.png" alt="CoT output" width="80%">
+<p>The system has the following features:</p>
+<ul>
+<li>Intelligent query routing</li>
+<li>PDF processing using Docling for accurate text extraction and chunking</li>
+<li>Persistent vector storage with Oracle AI Database (PDF and Websites)</li>
+<li>Smart context retrieval and response generation</li>
+<li>FastAPI-based REST API for document upload and querying</li>
+<li>Support for local, agentic workflows using <code>gemma3:270m</code> via Ollama</li>
+<li>Optimized for speed with Ollama integration</li>
+<li>Optional Chain of Thought (CoT) reasoning for more detailed and structured responses</li>
+</ul>
+<img src="img/gradio_1.png" alt="Gradio Interface" width="80%">
+<img src="img/gradio_2.png" alt="Gradio Interface" width="80%">
+<img src="img/gradio_3.png" alt="Gradio Interface" width="80%">
+<img src="img/gradio_4.png" alt="Gradio Interface" width="80%">
+<p>Here you can find a result of using Chain of Thought (CoT) reasoning:</p>
+<img src="img/cot_final_answer.png" alt="CoT output" width="80%">
+<h2 id="0-prerequisites-and-setup">0. Prerequisites and setup</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ol>
+<li>
+<p>Install and run <strong>Ollama</strong> (required for local LLM inference):</p>
+<ul>
+<li><a href="https://ollama.com/download">Download Ollama</a></li>
+<li>Pull the default model:<pre class="hljs"><code><div>ollama pull gemma3:270m
+<span class="hljs-comment"># or the 4b model</span>
+ollama pull gemma3:latest
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>(Optional) For specialized agents, you may pull other Ollama models:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># for coding</span>
+ollama pull qwen2.5-coder:7b
+ollama pull deepseek-r1:1.5b
+</div></code></pre>
+</li>
+</ol>
+<h3 id="setup">Setup</h3>
+<ol>
+<li>
+<p>Clone the repository and install dependencies:</p>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">clone</span> https://github.com/oracle-devrel/ai-solutions.git
+<span class="hljs-built_in">cd</span> ai-solutions/apps/agentic_rag
+pip install -r requirements.txt
+</div></code></pre>
+</li>
+<li>
+<p>Start the Ollama service</p>
+</li>
+<li>
+<p>Pull the models you want to use beforehand:</p>
+<pre class="hljs"><code><div>ollama pull &lt;model&gt; <span class="hljs-comment"># see ollama.com/models</span>
+</div></code></pre>
+</li>
+</ol>
+<h2 id="1-getting-started">1. Getting Started</h2>
+<p>You can launch this solution in multiple ways:</p>
+<h3 id="quick-start-unified-launcher-recommended">Quick Start: Unified Launcher (Recommended)</h3>
+<p>The simplest way to start the entire system is using the unified launcher:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Start everything (FastAPI + Gradio + Open WebUI)</span>
+python run_app.py
+
+<span class="hljs-comment"># Start only Gradio interface</span>
+python run_app.py --gradio
+
+<span class="hljs-comment"># Start only Open WebUI interface</span>
+python run_app.py --openwebui
+
+<span class="hljs-comment"># Start API server only (for external frontends)</span>
+python run_app.py --api-only
+</div></code></pre>
+<p><strong>Default Ports:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Port</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FastAPI Backend</td>
+<td>8000</td>
+<td>http://localhost:8000</td>
+</tr>
+<tr>
+<td>Gradio UI</td>
+<td>7860</td>
+<td>http://localhost:7860</td>
+</tr>
+<tr>
+<td>Open WebUI</td>
+<td>3000</td>
+<td>http://localhost:3000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-using-the-complete-rest-api">1. Using the Complete REST API</h3>
+<p>Start the API server:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Option 1: Start the CLI (Command Line Interface)</span>
+python agent_cli.py
+
+<span class="hljs-comment"># Option 2: Start the GUI (Gradio Interface)</span>
+python gradio_app.py
+
+<span class="hljs-comment"># Alternative: Start the API server directly</span>
+python -m src.main
+</div></code></pre>
+<p>The API will be available at <code>http://localhost:8000</code>. You can then use the API endpoints as described in the API Endpoints section below.</p>
+<h3 id="2-using-the-gradio-interface-recommended">2. Using the Gradio Interface (Recommended)</h3>
+<p>The system provides a user-friendly web interface using Gradio, which allows you to:</p>
+<ul>
+<li>Select and pull <code>ollama</code> models directly from the interface</li>
+<li>Upload and process PDF documents</li>
+<li>Process web content from URLs</li>
+<li>Chat with your documents using either local or OpenAI models</li>
+<li>Toggle Chain of Thought reasoning</li>
+</ul>
+<p>To launch the Gradio interface:</p>
+<pre class="hljs"><code><div>python gradio_app.py
+</div></code></pre>
+<p>This will start the Gradio server and automatically:</p>
+<ol>
+<li>Start the A2A API server in the background (required for agent collaboration)</li>
+<li>Open the interface in your default browser at <code>http://localhost:7860</code></li>
+</ol>
+<p>The interface has two main tabs:</p>
+<ol>
+<li>
+<p><strong>Model Management</strong>:</p>
+<ul>
+<li>Download models in advance to prepare them for use</li>
+<li>View model information including size and VRAM requirements</li>
+<li>Check download status and error messages</li>
+</ul>
+</li>
+<li>
+<p><strong>Document Processing</strong>:</p>
+<ul>
+<li>Upload PDFs using the file uploader</li>
+<li>Process web content by entering URLs</li>
+<li>View processing status and results</li>
+</ul>
+</li>
+<li>
+<p><strong>Chat Interface</strong>:</p>
+<ul>
+<li>Select between different model options:
+<ul>
+<li><strong>gemma3:270m</strong> - Default local model (recommended)</li>
+<li>Other Ollama models (if installed)</li>
+</ul>
+</li>
+<li>Toggle Chain of Thought reasoning for more detailed responses</li>
+<li>Chat with your documents using natural language</li>
+<li>Clear chat history as needed</li>
+</ul>
+</li>
+</ol>
+<p>Note: The interface will automatically detect available models based on your configuration:</p>
+<ul>
+<li>Ollama models require Ollama to be installed and running</li>
+</ul>
+<h3 id="3-using-open-webui-interface">3. Using Open WebUI Interface</h3>
+<p>Open WebUI provides a modern, feature-rich chat interface that connects to the same backend as Gradio. It's ideal for users who prefer a ChatGPT-like experience.</p>
+<h4 id="installation">Installation</h4>
+<pre class="hljs"><code><div>pip install open-webui
+</div></code></pre>
+<h4 id="starting-open-webui">Starting Open WebUI</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Option 1: Using the unified launcher (recommended)</span>
+python run_app.py --openwebui
+
+<span class="hljs-comment"># Option 2: Start Open WebUI standalone</span>
+python openwebui_app.py
+
+<span class="hljs-comment"># Option 3: Start both Gradio and Open WebUI</span>
+python run_app.py
+</div></code></pre>
+<p>Open WebUI will be available at <code>http://localhost:3000</code>.</p>
+<h4 id="available-reasoning-models">Available Reasoning Models</h4>
+<p>Open WebUI sees 18 reasoning &quot;models&quot; that correspond to different reasoning strategies:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>standard</code></td>
+<td>Standard response without specialized reasoning</td>
+</tr>
+<tr>
+<td><code>standard-rag</code></td>
+<td>Standard response with RAG context from all collections</td>
+</tr>
+<tr>
+<td><code>cot</code></td>
+<td>Chain of Thought - step-by-step reasoning</td>
+</tr>
+<tr>
+<td><code>cot-rag</code></td>
+<td>Chain of Thought with RAG context</td>
+</tr>
+<tr>
+<td><code>tot</code></td>
+<td>Tree of Thoughts - parallel path exploration</td>
+</tr>
+<tr>
+<td><code>tot-rag</code></td>
+<td>Tree of Thoughts with RAG context</td>
+</tr>
+<tr>
+<td><code>react</code></td>
+<td>ReAct - reasoning and acting interleaved</td>
+</tr>
+<tr>
+<td><code>react-rag</code></td>
+<td>ReAct with RAG context</td>
+</tr>
+<tr>
+<td><code>self-reflection</code></td>
+<td>Self-Reflection - iterative critique and refinement</td>
+</tr>
+<tr>
+<td><code>self-reflection-rag</code></td>
+<td>Self-Reflection with RAG context</td>
+</tr>
+<tr>
+<td><code>consistency</code></td>
+<td>Self-Consistency - multiple samples with voting</td>
+</tr>
+<tr>
+<td><code>consistency-rag</code></td>
+<td>Self-Consistency with RAG context</td>
+</tr>
+<tr>
+<td><code>decomposed</code></td>
+<td>Decomposed - breaks problems into sub-problems</td>
+</tr>
+<tr>
+<td><code>decomposed-rag</code></td>
+<td>Decomposed with RAG context</td>
+</tr>
+<tr>
+<td><code>least-to-most</code></td>
+<td>Least-to-Most - simplest to most complex</td>
+</tr>
+<tr>
+<td><code>least-to-most-rag</code></td>
+<td>Least-to-Most with RAG context</td>
+</tr>
+<tr>
+<td><code>recursive</code></td>
+<td>Recursive - recursive problem decomposition</td>
+</tr>
+<tr>
+<td><code>recursive-rag</code></td>
+<td>Recursive with RAG context</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> Models with <code>-rag</code> suffix perform unified similarity search across <strong>all collections</strong> (PDF, Web, Repository) before reasoning.</p>
+<h4 id="openai-compatible-api">OpenAI-Compatible API</h4>
+<p>The backend exposes OpenAI-compatible endpoints that Open WebUI (and other clients) can consume:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># List available models</span>
+curl http://localhost:8000/v1/models
+
+<span class="hljs-comment"># Chat completion (streaming)</span>
+curl -X POST http://localhost:8000/v1/chat/completions \
+  -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+  -d <span class="hljs-string">&#x27;{
+    &quot;model&quot;: &quot;cot-rag&quot;,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What is machine learning?&quot;}],
+    &quot;stream&quot;: true
+  }&#x27;</span>
+
+<span class="hljs-comment"># Health check</span>
+curl http://localhost:8000/v1/health
+</div></code></pre>
+<h3 id="4-using-the-cli">4. Using the CLI</h3>
+<p>The easiest way to use the system is through the interactive CLI:</p>
+<pre class="hljs"><code><div>python agent_cli.py
+</div></code></pre>
+<p><strong>Interactive Experience:</strong></p>
+<pre class="hljs"><code><div>╭──────────────────────────────────────────────╮
+│ AGENTIC RAG SYSTEM CLI                       │
+│ Oracle AI Vector Search + Ollama (Gemma 3)   │
+╰──────────────────────────────────────────────╯
+
+? Select a Task:
+  Process PDFs
+  Process Websites
+  Manage Vector Store
+  Test Oracle DB
+  Chat with Agent (RAG)
+  Exit
+</div></code></pre>
+<p><strong>Features:</strong></p>
+<ol>
+<li><strong>Process PDFs</strong>: Ingest documents from files, directories, or URLs.</li>
+<li><strong>Process Websites</strong>: Crawl and ingest web content.</li>
+<li><strong>Manage Vector Store</strong>: Add processed chunks to the database.</li>
+<li><strong>Test Oracle DB</strong>: Verify connectivity and view table statistics.</li>
+<li><strong>Chat with Agent</strong>: Interactive RAG chat using <code>gemma3:270m</code> (Ollama).</li>
+</ol>
+<h3 id="5-component-level-usage-advanced">5. Component-level Usage (Advanced)</h3>
+<p>If you prefer to run individual components manually:</p>
+<h4 id="process-pdfs">Process PDFs</h4>
+<p>To process a PDF file and save the chunks to a JSON file, run:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Process a single PDF</span>
+python -m src.pdf_processor --input path/to/document.pdf --output chunks.json
+
+<span class="hljs-comment"># Process multiple PDFs in a directory</span>
+python -m src.pdf_processor --input path/to/pdf/directory --output chunks.json
+
+<span class="hljs-comment"># Process a single PDF from a URL </span>
+python -m src.pdf_processor --input https://example.com/document.pdf --output chunks.json
+<span class="hljs-comment"># sample pdf: https://arxiv.org/pdf/2203.06605</span>
+</div></code></pre>
+<h4 id="process-websites-with-trafilatura">Process Websites with Trafilatura</h4>
+<p>Process a single website and save the content to a JSON file:</p>
+<pre class="hljs"><code><div>python -m src.web_processor --input https://example.com --output docs/web_content.json
+</div></code></pre>
+<p>Or, process multiple URLs from a file and save them into a single JSON file:</p>
+<pre class="hljs"><code><div>python -m src.web_processor --input urls.txt --output docs/web_content.json
+</div></code></pre>
+<h4 id="manage-vector-store">Manage Vector Store</h4>
+<p>To add documents to the vector store and query them, run:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Add documents from a chunks file, by default to the pdf_collection</span>
+python -m src.store --add chunks.json
+<span class="hljs-comment"># for websites, use the --add-web flag</span>
+python -m src.store --add-web docs/web_content.json
+
+<span class="hljs-comment"># Query the vector store directly, both pdf and web collections</span>
+<span class="hljs-comment"># llm will make the best decision on which collection to query based upon your input</span>
+python -m src.store --query <span class="hljs-string">&quot;your search query&quot;</span>
+python -m src.local_rag_agent --query <span class="hljs-string">&quot;your search query&quot;</span>
+</div></code></pre>
+<h4 id="test-oracle-db-vector-store">Test Oracle DB Vector Store</h4>
+<p>The system includes a test script to verify Oracle DB connectivity and examine the contents of your collections. This is useful for:</p>
+<ul>
+<li>Checking if Oracle DB is properly configured</li>
+<li>Viewing statistics about your collections</li>
+<li>Inspecting the content stored in each collection</li>
+<li>Testing basic vector search functionality</li>
+</ul>
+<p>To run the test:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Basic test - checks connection and runs a test query</span>
+python tests/test_oradb.py
+
+<span class="hljs-comment"># Show only collection statistics without inserting test data</span>
+python tests/test_oradb.py --stats-only
+
+<span class="hljs-comment"># Specify a custom query for testing</span>
+python tests/test_oradb.py --query <span class="hljs-string">&quot;artificial intelligence&quot;</span>
+</div></code></pre>
+<p>The script will:</p>
+<ol>
+<li>Verify Oracle DB credentials in your <code>config.yaml</code> file</li>
+<li>Test connection to the Oracle DB</li>
+<li>Display the total number of chunks in each collection (PDF, Web, Repository, General Knowledge)</li>
+<li>Show content and metadata from the most recently inserted chunk in each collection</li>
+<li>Unless running with <code>--stats-only</code>, insert test data and run a sample vector search</li>
+</ol>
+<p>Requirements:</p>
+<ul>
+<li>Oracle DB credentials properly configured in <code>config.yaml</code>:<pre class="hljs"><code><div><span class="hljs-attr">ORACLE_DB_USERNAME:</span> <span class="hljs-string">ADMIN</span>
+<span class="hljs-attr">ORACLE_DB_PASSWORD:</span> <span class="hljs-string">your_password_here</span>
+<span class="hljs-attr">ORACLE_DB_DSN:</span> <span class="hljs-string">your_connection_string_here</span>
+</div></code></pre>
+</li>
+<li>The <code>oracledb</code> Python package installed</li>
+</ul>
+<h4 id="use-rag-agent">Use RAG Agent</h4>
+<p>To query documents using the local Ollama model, run:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Using local ollama model (gemma3:270m by default)</span>
+python -m src.local_rag_agent --query <span class="hljs-string">&quot;Can you explain the DaGAN Approach proposed in the Depth-Aware Generative Adversarial Network for Talking Head Video Generation article?&quot;</span>
+</div></code></pre>
+<h3 id="6-complete-pipeline-example">6. Complete Pipeline Example</h3>
+<p>First, we process a document and query it using the local model. Then, we add the document to the vector store and query from the knowledge base to get the RAG system in action.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># 1. Process the PDF</span>
+python -m src.pdf_processor --input example.pdf --output chunks.json
+
+<span class="hljs-comment">#python -m src.pdf_processor --input https://arxiv.org/pdf/2203.06605 --output chunks.json</span>
+
+<span class="hljs-comment"># 2. Add to vector store</span>
+python -m src.store --add chunks.json
+
+<span class="hljs-comment"># 3. Query using local model</span>
+python -m src.local_rag_agent --query <span class="hljs-string">&quot;Can you explain the DaGAN Approach proposed in the Depth-Aware Generative Adversarial Network for Talking Head Video Generation article?&quot;</span>
+</div></code></pre>
+<h2 id="2-deployment">2. Deployment</h2>
+<h3 id="docker-deployment">Docker Deployment</h3>
+<p>You can deploy the application using Docker. This ensures a consistent environment with all dependencies pre-installed.</p>
+<ol>
+<li>
+<p><strong>Build the Docker image</strong>:</p>
+<pre class="hljs"><code><div>docker build --network=host -t agentic-rag .
+</div></code></pre>
+</li>
+<li>
+<p><strong>Run the container</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Recommended for Linux (bypasses Docker network/DNS issues)</span>
+docker run -d \
+  --network=host \
+  --gpus all \
+  --name agentic-rag \
+  agentic-rag
+
+<span class="hljs-comment"># Alternative (Port mapping)</span>
+<span class="hljs-comment"># Note: May require DNS configuration if container cannot access host/internet</span>
+<span class="hljs-comment"># docker run -d \</span>
+<span class="hljs-comment">#   --gpus all \</span>
+<span class="hljs-comment">#   -p 7860:7860 \</span>
+<span class="hljs-comment">#   -p 11434:11434 \</span>
+<span class="hljs-comment">#   --name agentic-rag \</span>
+<span class="hljs-comment">#   agentic-rag</span>
+</div></code></pre>
+<p><em>Note: The <code>--gpus all</code> flag requires the NVIDIA Container Toolkit. If you don't have a GPU, the application will run in CPU-only mode (slower), and you can omit this flag.</em></p>
+</li>
+<li>
+<p><strong>Access the application</strong>:</p>
+<ul>
+<li>Gradio Interface: <code>http://localhost:7860</code></li>
+<li>Ollama API: <code>http://localhost:11434</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="kubernetes-deployment">Kubernetes Deployment</h3>
+<p>For Kubernetes deployment, we provide a comprehensive set of manifests and scripts in the <code>k8s/</code> directory.</p>
+<ol>
+<li>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>A Kubernetes cluster (local or cloud)</li>
+<li><code>kubectl</code> configured</li>
+<li>NVIDIA GPU nodes (recommended for best performance)</li>
+</ul>
+</li>
+<li>
+<p><strong>Deploy using the helper script</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> k8s
+
+<span class="hljs-comment"># Deploy to default namespace</span>
+./deploy.sh
+
+<span class="hljs-comment"># Or deploy with a specific Hugging Face token (if needed)</span>
+./deploy.sh --hf-token <span class="hljs-string">&quot;your-token&quot;</span>
+</div></code></pre>
+</li>
+<li>
+<p><strong>Manual Deployment</strong>:</p>
+<pre class="hljs"><code><div>kubectl apply -f k8s/local-deployment/
+</div></code></pre>
+</li>
+</ol>
+<p>For detailed Kubernetes instructions, including OKE (Oracle Kubernetes Engine) and Minikube, please refer to the <a href="k8s/README.md">Kubernetes README</a>.</p>
+<h2 id="3-chain-of-thought-cot-support">3. Chain of Thought (CoT) Support</h2>
+<p>The system implements an advanced multi-agent Chain of Thought system, allowing complex queries to be broken down and processed through multiple specialized agents. This feature enhances the reasoning capabilities of both local and cloud-based models.</p>
+<h3 id="multi-agent-system">Multi-Agent System</h3>
+<p>The CoT system consists of four specialized agents:</p>
+<ol>
+<li><strong>Planner Agent</strong>: Breaks down complex queries into clear, manageable steps</li>
+<li><strong>Research Agent</strong>: Gathers and analyzes relevant information from knowledge bases</li>
+<li><strong>Reasoning Agent</strong>: Applies logical analysis to information and draws conclusions</li>
+<li><strong>Synthesis Agent</strong>: Combines multiple pieces of information into a coherent response</li>
+</ol>
+<h3 id="using-cot">Using CoT</h3>
+<p>You can activate the multi-agent CoT system in several ways:</p>
+<ol>
+<li><strong>Command Line</strong>:</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-comment"># Using local gemma3:270m model (default)</span>
+python local_rag_agent.py --query <span class="hljs-string">&quot;your query&quot;</span> --use-cot
+</div></code></pre>
+<ol start="2">
+<li><strong>Testing the System</strong>:</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-comment"># Test with local model (default)</span>
+python tests/test_new_cot.py
+</div></code></pre>
+<ol start="3">
+<li><strong>API Endpoint</strong>:</li>
+</ol>
+<pre class="hljs"><code><div>POST /query
+<span class="hljs-attribute">Content-Type</span><span class="hljs-punctuation">: </span>application/json
+
+{
+    &quot;query&quot;: &quot;your query&quot;,
+    &quot;use_cot&quot;: true
+}
+</div></code></pre>
+<h3 id="example-output">Example Output</h3>
+<p>When CoT is enabled, the system will show:</p>
+<ul>
+<li>The initial plan for answering the query</li>
+<li>Research findings for each step</li>
+<li>Reasoning process and conclusions</li>
+<li>Final synthesized answer</li>
+<li>Sources used from the knowledge base</li>
+</ul>
+<p>Example:</p>
+<pre class="hljs"><code><div>Step 1: Planning
+- Break down the technical components
+- Identify key features
+- Analyze implementation details
+
+Step 2: Research
+[Research findings for each step...]
+
+Step 3: Reasoning
+[Logical analysis and conclusions...]
+
+Final Answer:
+[Comprehensive response synthesized from all steps...]
+
+Sources used:
+- document.pdf (pages: 1, 2, 3)
+- implementation.py
+</div></code></pre>
+<h3 id="benefits">Benefits</h3>
+<p>The multi-agent CoT approach offers several advantages:</p>
+<ul>
+<li>More structured and thorough analysis of complex queries</li>
+<li>Better integration with knowledge bases</li>
+<li>Transparent reasoning process</li>
+<li>Improved answer quality through specialized agents</li>
+<li>Works with both local and cloud-based models</li>
+</ul>
+<h2 id="annex-api-endpoints">Annex: API Endpoints</h2>
+<h3 id="upload-pdf">Upload PDF</h3>
+<pre class="hljs"><code><div>POST /upload/pdf
+<span class="hljs-attribute">Content-Type</span><span class="hljs-punctuation">: </span>multipart/form-data
+
+<span class="hljs-attribute">file</span><span class="hljs-punctuation">: </span>&lt;pdf-file&gt;
+</div></code></pre>
+<p>This endpoint uploads and processes a PDF file, storing its contents in the vector database.</p>
+<h3 id="query">Query</h3>
+<pre class="hljs"><code><div>POST /query
+<span class="hljs-attribute">Content-Type</span><span class="hljs-punctuation">: </span>application/json
+
+{
+    &quot;query&quot;: &quot;your question here&quot;
+}
+</div></code></pre>
+<p>This endpoint processes a query through the agentic RAG pipeline and returns a response with context.</p>
+<h2 id="annex-architecture">Annex: Architecture</h2>
+<img src="img/architecture.png" alt="Architecture" width="80%">
+<p>The system consists of several key components:</p>
+<ol>
+<li><strong>PDF Processor</strong>: we use <code>docling</code> to extract and chunk text from PDF documents</li>
+<li><strong>Web Processor</strong>: we use <code>trafilatura</code> to extract and chunk text from websites</li>
+<li><strong>GitHub Repository Processor</strong>: we use <code>gitingest</code> to extract and chunk text from repositories</li>
+<li><strong>Vector Store</strong>: Manages document embeddings and similarity search using <code>Oracle AI Database</code> (default) or <code>ChromaDB</code> (fallback)</li>
+<li><strong>RAG Agent</strong>: Makes intelligent decisions about query routing and response generation
+<ul>
+<li>Uses <code>gemma3:270m</code> via Ollama as the default local model</li>
+</ul>
+</li>
+<li><strong>FastAPI Server</strong>: Provides REST API endpoints for document upload and querying</li>
+<li><strong>Gradio Interface</strong>: Provides a user-friendly web interface for interacting with the RAG system</li>
+</ol>
+<p>The RAG Agent flow is the following:</p>
+<ol>
+<li>Analyzes query type</li>
+<li>Try to find relevant PDF context, regardless of query type</li>
+<li>If PDF context is found, use it to generate a response.</li>
+<li>If no PDF context is found OR if it's a general knowledge query, use the pre-trained LLM directly</li>
+<li>Fall back to a &quot;no information&quot; response only in edge cases.</li>
+</ol>
+<h2 id="annex-command-line-usage">Annex: Command Line Usage</h2>
+<p>You can run the system from the command line using:</p>
+<pre class="hljs"><code><div>python -m src.local_rag_agent --query <span class="hljs-string">&quot;Your question here&quot;</span> [options]
+</div></code></pre>
+<h3 id="command-line-arguments">Command Line Arguments</h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--query</code></td>
+<td>The query to process</td>
+<td><em>Required</em></td>
+</tr>
+<tr>
+<td><code>--embeddings</code></td>
+<td>Select embeddings backend (<code>oracle</code> or <code>chromadb</code>)</td>
+<td><code>oracle</code></td>
+</tr>
+<tr>
+<td><code>--model</code></td>
+<td>Model to use for inference</td>
+<td><code>gemma3:270m</code></td>
+</tr>
+<tr>
+<td><code>--collection</code></td>
+<td>Collection to query (PDF, Repository, Web, General)</td>
+<td>Auto-determined</td>
+</tr>
+<tr>
+<td><code>--use-cot</code></td>
+<td>Enable Chain of Thought reasoning</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--store-path</code></td>
+<td>Path to ChromaDB store (if using ChromaDB)</td>
+<td><code>embeddings</code></td>
+</tr>
+<tr>
+<td><code>--skip-analysis</code></td>
+<td>Skip query analysis step</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--verbose</code></td>
+<td>Show full content of sources</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>--quiet</code></td>
+<td>Disable verbose logging</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples</h3>
+<p>Query using Oracle DB (default):</p>
+<pre class="hljs"><code><div>python -m src.local_rag_agent --query <span class="hljs-string">&quot;How does vector search work?&quot;</span>
+</div></code></pre>
+<p>Force using ChromaDB:</p>
+<pre class="hljs"><code><div>python -m src.local_rag_agent --query <span class="hljs-string">&quot;How does vector search work?&quot;</span> --embeddings chromadb
+</div></code></pre>
+<p>Query with Chain of Thought reasoning:</p>
+<pre class="hljs"><code><div>python -m src.local_rag_agent --query <span class="hljs-string">&quot;Explain the difference between RAG and fine-tuning&quot;</span> --use-cot
+</div></code></pre>
+<p>Query a specific collection:</p>
+<pre class="hljs"><code><div>python -m src.local_rag_agent --query <span class="hljs-string">&quot;How to implement a queue?&quot;</span> --collection <span class="hljs-string">&quot;Repository Collection&quot;</span>
+</div></code></pre>
+<h2 id="annex-user-interface-instructions">Annex: User Interface Instructions</h2>
+<h3 id="unified-launcher-options">Unified Launcher Options</h3>
+<pre class="hljs"><code><div>python run_app.py              <span class="hljs-comment"># Start all UIs (default)</span>
+python run_app.py --gradio     <span class="hljs-comment"># Gradio only (port 7860)</span>
+python run_app.py --openwebui  <span class="hljs-comment"># Open WebUI only (port 3000)</span>
+python run_app.py --api-only   <span class="hljs-comment"># Backend API only (port 8000)</span>
+</div></code></pre>
+<h3 id="open-webui-features">Open WebUI Features</h3>
+<p>Open WebUI provides a modern chat interface with:</p>
+<ul>
+<li><strong>18 Reasoning Models</strong>: Each reasoning strategy appears as a selectable &quot;model&quot;</li>
+<li><strong>RAG Integration</strong>: Models ending in <code>-rag</code> search all collections automatically</li>
+<li><strong>Streaming Responses</strong>: Real-time streaming for better UX</li>
+<li><strong>Chat History</strong>: Built-in conversation management</li>
+<li><strong>Export/Import</strong>: Save and load conversations</li>
+<li><strong>Themes</strong>: Dark/light mode support</li>
+</ul>
+<h3 id="gradio-interface-instructions">Gradio Interface Instructions</h3>
+<h4 id="1-document-processing">1. Document Processing</h4>
+<ul>
+<li><strong>Upload PDFs</strong> using the file uploader.</li>
+<li><strong>Process web content</strong> by entering URLs.</li>
+<li><strong>Process repositories</strong> by entering paths or GitHub URLs.</li>
+<li>All processed content is added to the knowledge base.</li>
+</ul>
+<h4 id="2-standard-chat-interface">2. Standard Chat Interface</h4>
+<ul>
+<li>Quick responses without detailed reasoning steps.</li>
+<li>Select your preferred agent (Ollama gemma3 by default).</li>
+<li>Select which knowledge collection to query:
+<ul>
+<li><strong>PDF Collection</strong>: Always searches PDF documents.</li>
+<li><strong>Repository Collection</strong>: Always searches code repositories.</li>
+<li><strong>Web Knowledge Base</strong>: Always searches web content.</li>
+<li><strong>General Knowledge</strong>: Uses the model's built-in knowledge without searching collections.</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-chain-of-thought-chat-interface">3. Chain of Thought Chat Interface</h4>
+<ul>
+<li>Detailed responses with step-by-step reasoning.</li>
+<li>See the planning, research, reasoning, and synthesis steps.</li>
+<li>Great for complex queries or when you want to understand the reasoning process.</li>
+<li>May take longer but provides more detailed and thorough answers.</li>
+<li>Same collection selection options as the Standard Chat Interface.</li>
+</ul>
+<h4 id="4-a2a-chat-interface">4. A2A Chat Interface</h4>
+<ul>
+<li>
+<p>Same chat experience as standard interfaces but uses A2A protocol.</p>
+</li>
+<li>
+<p><strong>Granular Execution Trace</strong>: Displays step-by-step execution including Orchestrator logic, Agent Selection, and detailed intermediate steps.</p>
+</li>
+<li>
+<p><strong>Real Vector Retrieval</strong>: Shows actual retrieved content from the knowledge base during the Research phase, not just final answers.</p>
+</li>
+<li>
+<p><strong>Agent-to-Agent Communication</strong>: All queries go through A2A protocol.</p>
+</li>
+<li>
+<p><strong>Collection Support</strong>: PDF, Repository, Web, and General Knowledge collections.</p>
+</li>
+<li>
+<p><strong>Chain of Thought</strong>: Step-by-step reasoning through A2A.</p>
+</li>
+<li>
+<p><strong>Status Monitoring</strong>: Check A2A server connectivity.</p>
+</li>
+<li>
+<p><strong>Same UI</strong>: Familiar chat interface with A2A backend.</p>
+</li>
+</ul>
+<h4 id="5-a2a-protocol-testing">5. A2A Protocol Testing</h4>
+<ul>
+<li>
+<p>Test the Agent2Agent (A2A) protocol functionality.</p>
+</li>
+<li>
+<p><strong>Health Check</strong>: Verify A2A server connectivity.</p>
+</li>
+<li>
+<p><strong>Agent Card</strong>: Get agent capability information.</p>
+</li>
+<li>
+<p><strong>Agent Discovery</strong>: Find agents with specific capabilities.</p>
+</li>
+<li>
+<p><strong>Document Query</strong>: Test A2A document querying with different collections.</p>
+</li>
+<li>
+<p><strong>Task Management</strong>: Create, monitor, and track long-running tasks.</p>
+</li>
+<li>
+<p><strong>Task Dashboard</strong>: View all tracked tasks and their statuses.</p>
+</li>
+<li>
+<p><strong>Complete Test Suite</strong>: Run all A2A tests in sequence.</p>
+</li>
+</ul>
+<h4 id="6-performance-expectations">6. Performance Expectations</h4>
+<ul>
+<li><strong>Default Model</strong>: gemma3:270m (Ollama) - Optimized for speed and quality.</li>
+<li><strong>Other Ollama models</strong>: Supported if installed via <code>ollama pull</code>.</li>
+<li><strong>A2A requests</strong>: Depends on A2A server performance and network latency.</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: The interface will automatically detect available models based on your configuration:</p>
+<ul>
+<li><code>gemma3:270m</code> is the default option (requires Ollama to be installed and running).</li>
+<li>Other Ollama models can be selected if available.</li>
+<li>A2A testing requires the A2A server to be running separately.</li>
+</ul>
+</blockquote>
+<h2 id="5-agent2agent-a2a-protocol-integration">5. Agent2Agent (A2A) Protocol Integration</h2>
+<p>The agentic_rag system now includes full support for the Agent2Agent (A2A) protocol, enabling seamless communication and collaboration with other AI agents. This integration transforms the system into an interoperable agent that can participate in multi-agent workflows and ecosystems.</p>
+<h3 id="50-distributed-chain-of-thought-architecture">5.0 Distributed Chain of Thought Architecture</h3>
+<p>The system implements a <strong>distributed multi-agent Chain of Thought (CoT)</strong> architecture where each specialized agent can run on separate servers and communicate via the A2A protocol. This enables:</p>
+<ul>
+<li><strong>True Distributed Processing</strong>: Each agent (Planner, Researcher, Reasoner, Synthesizer) can run on different servers</li>
+<li><strong>Scalable Agent Deployment</strong>: Deploy agents independently based on resource requirements</li>
+<li><strong>Agent-to-Agent Communication</strong>: All communication happens via A2A protocol using agent IDs and remote URLs</li>
+<li><strong>Load Balancing</strong>: Distribute workload across multiple servers for better performance</li>
+</ul>
+<h4 id="distributed-architecture-diagram">Distributed Architecture Diagram</h4>
+<pre class="hljs"><code><div>┌─────────────────────────────────────────────────────────────────────┐
+│                        User Query via Gradio                        │
+└────────────────────────────┬────────────────────────────────────────┘
+                             │
+                             ▼
+                  ┌──────────────────────┐
+                  │   A2A Orchestrator   │
+                  │  (localhost:8000)    │
+                  └──────────────────────┘
+                             │
+            ┌────────────────┼────────────────┐
+            │                │                │
+            ▼                ▼                ▼
+┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+│ Planner Agent   │  │Researcher Agent │  │ Reasoner Agent  │
+│ Agent ID:       │  │ Agent ID:       │  │ Agent ID:       │
+│planner_agent_v1 │  │researcher_a_v1  │  │reasoner_a_v1    │
+│                 │  │                 │  │                 │
+│ URL: http://    │  │ URL: http://    │  │ URL: http://    │
+│ localhost:8000  │  │ localhost:8000  │  │ localhost:8000  │
+│ OR              │  │ OR              │  │ OR              │
+│ server1:8001 ◄──┼──► server2:8002 ◄──┼──► server3:8003   │
+└─────────────────┘  └─────────────────┘  └─────────────────┘
+                             │
+                             ▼
+                  ┌─────────────────┐
+                  │Synthesizer Agent│
+                  │ Agent ID:       │
+                  │synthesizer_a_v1 │
+                  │                 │
+                  │ URL: http://    │
+                  │ localhost:8000  │
+                  │ OR              │
+                  │ server4:8004    │
+                  └─────────────────┘
+                             │
+                             ▼
+                  ┌──────────────────┐
+                  │  Final Answer    │
+                  │  to User         │
+                  └──────────────────┘
+</div></code></pre>
+<h4 id="how-distributed-communication-works">How Distributed Communication Works</h4>
+<ol>
+<li><strong>Agent Discovery</strong>: Agents register their capabilities and endpoints with the A2A registry</li>
+<li><strong>Agent Addressing</strong>: Each agent is addressable via <code>{base_url}/a2a</code> + <code>agent_id</code></li>
+<li><strong>Remote Communication</strong>:
+<ul>
+<li>Orchestrator sends A2A request to: <code>http://server1:8001/a2a</code></li>
+<li>Request body includes: <code>{&quot;method&quot;: &quot;agent.query&quot;, &quot;params&quot;: {&quot;agent_id&quot;: &quot;planner_agent_v1&quot;, ...}}</code></li>
+<li>Agent processes and returns result via A2A response</li>
+</ul>
+</li>
+<li><strong>Sequential Flow</strong>: Planner → Researcher → Reasoner → Synthesizer (each via A2A protocol)</li>
+</ol>
+<h4 id="configuration-for-distributed-deployment">Configuration for Distributed Deployment</h4>
+<p>To deploy agents on different servers, update <code>config.yaml</code>:</p>
+<pre class="hljs"><code><div><span class="hljs-attr">AGENT_ENDPOINTS:</span>
+  <span class="hljs-attr">planner_url:</span> <span class="hljs-string">http://server1.example.com:8001</span>
+  <span class="hljs-attr">researcher_url:</span> <span class="hljs-string">http://server2.example.com:8002</span>
+  <span class="hljs-attr">reasoner_url:</span> <span class="hljs-string">http://server3.example.com:8003</span>
+  <span class="hljs-attr">synthesizer_url:</span> <span class="hljs-string">http://server4.example.com:8004</span>
+</div></code></pre>
+<p><strong>Local Development</strong> (default):</p>
+<pre class="hljs"><code><div><span class="hljs-attr">AGENT_ENDPOINTS:</span>
+  <span class="hljs-attr">planner_url:</span> <span class="hljs-string">http://localhost:8000</span>
+  <span class="hljs-attr">researcher_url:</span> <span class="hljs-string">http://localhost:8000</span>
+  <span class="hljs-attr">reasoner_url:</span> <span class="hljs-string">http://localhost:8000</span>
+  <span class="hljs-attr">synthesizer_url:</span> <span class="hljs-string">http://localhost:8000</span>
+</div></code></pre>
+<h4 id="specialized-agent-cards">Specialized Agent Cards</h4>
+<p>Each specialized agent has its own agent card describing its capabilities:</p>
+<table>
+<thead>
+<tr>
+<th>Agent ID</th>
+<th>Name</th>
+<th>Role</th>
+<th>Capability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>planner_agent_v1</code></td>
+<td>Strategic Planner</td>
+<td>Problem decomposition</td>
+<td>Breaks queries into 3-4 actionable steps</td>
+</tr>
+<tr>
+<td><code>researcher_agent_v1</code></td>
+<td>Information Researcher</td>
+<td>Knowledge gathering</td>
+<td>Searches vector stores and extracts findings</td>
+</tr>
+<tr>
+<td><code>reasoner_agent_v1</code></td>
+<td>Logic &amp; Reasoning</td>
+<td>Logical analysis</td>
+<td>Applies reasoning to draw conclusions</td>
+</tr>
+<tr>
+<td><code>synthesizer_agent_v1</code></td>
+<td>Information Synthesizer</td>
+<td>Response generation</td>
+<td>Combines steps into coherent final answer</td>
+</tr>
+</tbody>
+</table>
+<h4 id="benefits-of-distributed-architecture">Benefits of Distributed Architecture</h4>
+<ol>
+<li><strong>Resource Optimization</strong>: Deploy resource-intensive agents (Researcher) on GPU servers, lighter agents on CPU servers</li>
+<li><strong>Fault Tolerance</strong>: If one agent fails, others continue functioning</li>
+<li><strong>Independent Scaling</strong>: Scale specific agents based on load (e.g., multiple Researcher instances)</li>
+<li><strong>Technology Flexibility</strong>: Each agent can use different LLM backends (GPT-4, Claude, Ollama, etc.)</li>
+<li><strong>Security Isolation</strong>: Sensitive operations can run in isolated environments</li>
+<li><strong>Geographic Distribution</strong>: Deploy agents closer to data sources for lower latency</li>
+</ol>
+<h3 id="31-why-a2a-protocol-implementation">3.1 Why A2A Protocol Implementation?</h3>
+<p><strong>Enhanced Interoperability</strong>: The A2A protocol enables the agentic_rag system to communicate with other AI agents using a standardized protocol, breaking down silos between different AI systems and frameworks.</p>
+<p><strong>Scalable Multi-Agent Workflows</strong>: By implementing A2A, the system can participate in complex multi-agent workflows where different agents handle specialized tasks (document processing, analysis, synthesis) and collaborate to solve complex problems.</p>
+<p><strong>Industry Standard Compliance</strong>: A2A is an open standard developed by Google, ensuring compatibility with other A2A-compliant agents and future-proofing the system.</p>
+<p><strong>Enterprise-Grade Security</strong>: A2A includes built-in security mechanisms including authentication, authorization, and secure communication protocols.</p>
+<p><strong>Agent Discovery</strong>: The protocol enables automatic discovery of other agents and their capabilities, allowing for dynamic agent composition and task delegation.</p>
+<h3 id="32-a2a-implementation-architecture">3.2 A2A Implementation Architecture</h3>
+<p>The A2A implementation consists of several key components:</p>
+<h4 id="321-core-a2a-infrastructure">3.2.1 Core A2A Infrastructure</h4>
+<ul>
+<li><strong>A2A Models</strong> (<code>a2a_models.py</code>): Pydantic models for JSON-RPC 2.0 communication</li>
+<li><strong>A2A Handler</strong> (<code>a2a_handler.py</code>): Main request handler and method router</li>
+<li><strong>Task Manager</strong> (<code>task_manager.py</code>): Long-running task execution and status tracking</li>
+<li><strong>Agent Registry</strong> (<code>agent_registry.py</code>): Agent discovery and capability management</li>
+<li><strong>Agent Card</strong> (<code>agent_card.py</code>): Capability advertisement and metadata</li>
+</ul>
+<h4 id="322-supported-a2a-methods">3.2.2 Supported A2A Methods</h4>
+<p>The system supports the following A2A protocol methods:</p>
+<ul>
+<li><code>document.query</code>: Query documents using RAG with intelligent routing</li>
+<li><code>document.upload</code>: Process and store documents in vector database</li>
+<li><code>agent.query</code>: <strong>NEW</strong> - Query specialized CoT agents (Planner, Researcher, Reasoner, Synthesizer) for distributed reasoning</li>
+<li><code>task.create</code>: Create long-running tasks for complex operations</li>
+<li><code>task.status</code>: Check status of running tasks</li>
+<li><code>task.cancel</code>: Cancel running tasks</li>
+<li><code>agent.discover</code>: Discover other agents and their capabilities</li>
+<li><code>agent.register</code>: Register new agents with the A2A registry</li>
+<li><code>agent.card</code>: Get agent capability information</li>
+<li><code>health.check</code>: System health and status check</li>
+</ul>
+<h3 id="33-a2a-endpoints">3.3 A2A Endpoints</h3>
+<p>The system exposes the following A2A endpoints:</p>
+<ul>
+<li><code>POST /a2a</code>: Main A2A protocol endpoint for agent communication</li>
+<li><code>GET /agent_card</code>: Get the agent's capability card</li>
+<li><code>GET /a2a/health</code>: A2A health check endpoint</li>
+</ul>
+<h3 id="34-usage-examples">3.4 Usage Examples</h3>
+<h4 id="341-basic-a2a-communication">3.4.1 Basic A2A Communication</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Query documents via A2A protocol</span>
+curl -X POST http://localhost:8000/a2a \
+  -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+  -d <span class="hljs-string">&#x27;{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;document.query&quot;,
+    &quot;params&quot;: {
+      &quot;query&quot;: &quot;What is machine learning?&quot;,
+      &quot;collection&quot;: &quot;PDF&quot;,
+      &quot;use_cot&quot;: true
+    },
+    &quot;id&quot;: &quot;1&quot;
+  }&#x27;</span>
+</div></code></pre>
+<h4 id="342-task-management">3.4.2 Task Management</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Create a long-running task</span>
+curl -X POST http://localhost:8000/a2a \
+  -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+  -d <span class="hljs-string">&#x27;{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;task.create&quot;,
+    &quot;params&quot;: {
+      &quot;task_type&quot;: &quot;document_processing&quot;,
+      &quot;params&quot;: {
+        &quot;document&quot;: &quot;large_document.pdf&quot;,
+        &quot;chunk_count&quot;: 100
+      }
+    },
+    &quot;id&quot;: &quot;2&quot;
+  }&#x27;</span>
+
+<span class="hljs-comment"># Check task status</span>
+curl -X POST http://localhost:8000/a2a \
+  -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+  -d <span class="hljs-string">&#x27;{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;task.status&quot;,
+    &quot;params&quot;: {
+      &quot;task_id&quot;: &quot;task-id-from-previous-response&quot;
+    },
+    &quot;id&quot;: &quot;3&quot;
+  }&#x27;</span>
+</div></code></pre>
+<h4 id="343-agent-discovery">3.4.3 Agent Discovery</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Discover agents with specific capabilities</span>
+curl -X POST http://localhost:8000/a2a \
+  -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+  -d <span class="hljs-string">&#x27;{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;agent.discover&quot;,
+    &quot;params&quot;: {
+      &quot;capability&quot;: &quot;document.query&quot;
+    },
+    &quot;id&quot;: &quot;4&quot;
+  }&#x27;</span>
+
+<span class="hljs-comment"># Discover specialized CoT agents</span>
+curl -X POST http://localhost:8000/a2a \
+  -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+  -d <span class="hljs-string">&#x27;{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;agent.discover&quot;,
+    &quot;params&quot;: {
+      &quot;capability&quot;: &quot;agent.query&quot;
+    },
+    &quot;id&quot;: &quot;5&quot;
+  }&#x27;</span>
+
+<span class="hljs-comment"># Get agent card</span>
+curl -X GET http://localhost:8000/agent_card
+</div></code></pre>
+<h4 id="344-specialized-agent-query-distributed-cot">3.4.4 Specialized Agent Query (Distributed CoT)</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Query the Planner Agent</span>
+curl -X POST http://localhost:8000/a2a \
+  -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+  -d <span class="hljs-string">&#x27;{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;agent.query&quot;,
+    &quot;params&quot;: {
+      &quot;agent_id&quot;: &quot;planner_agent_v1&quot;,
+      &quot;query&quot;: &quot;How does machine learning work?&quot;
+    },
+    &quot;id&quot;: &quot;6&quot;
+  }&#x27;</span>
+
+<span class="hljs-comment"># Query the Researcher Agent</span>
+curl -X POST http://localhost:8000/a2a \
+  -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+  -d <span class="hljs-string">&#x27;{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;agent.query&quot;,
+    &quot;params&quot;: {
+      &quot;agent_id&quot;: &quot;researcher_agent_v1&quot;,
+      &quot;query&quot;: &quot;How does machine learning work?&quot;,
+      &quot;step&quot;: &quot;Understand the basic concept of ML&quot;
+    },
+    &quot;id&quot;: &quot;7&quot;
+  }&#x27;</span>
+
+<span class="hljs-comment"># Query the Reasoner Agent</span>
+curl -X POST http://localhost:8000/a2a \
+  -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+  -d <span class="hljs-string">&#x27;{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;agent.query&quot;,
+    &quot;params&quot;: {
+      &quot;agent_id&quot;: &quot;reasoner_agent_v1&quot;,
+      &quot;query&quot;: &quot;How does machine learning work?&quot;,
+      &quot;step&quot;: &quot;Analyze the key components&quot;,
+      &quot;context&quot;: [{&quot;content&quot;: &quot;Research findings about ML algorithms...&quot;}]
+    },
+    &quot;id&quot;: &quot;8&quot;
+  }&#x27;</span>
+
+<span class="hljs-comment"># Query the Synthesizer Agent</span>
+curl -X POST http://localhost:8000/a2a \
+  -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+  -d <span class="hljs-string">&#x27;{
+    &quot;jsonrpc&quot;: &quot;2.0&quot;,
+    &quot;method&quot;: &quot;agent.query&quot;,
+    &quot;params&quot;: {
+      &quot;agent_id&quot;: &quot;synthesizer_agent_v1&quot;,
+      &quot;query&quot;: &quot;How does machine learning work?&quot;,
+      &quot;reasoning_steps&quot;: [
+        &quot;ML is a subset of AI...&quot;,
+        &quot;It uses algorithms to learn from data...&quot;,
+        &quot;Key components include training and inference...&quot;
+      ]
+    },
+    &quot;id&quot;: &quot;9&quot;
+  }&#x27;</span>
+</div></code></pre>
+<h3 id="35-testing-a2a-implementation">3.5 Testing A2A Implementation</h3>
+<p>The A2A implementation includes comprehensive tests covering all functionality:</p>
+<h4 id="351-running-tests">3.5.1 Running Tests</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Run all A2A tests</span>
+python tests/run_a2a_tests.py
+
+<span class="hljs-comment"># Run specific test categories</span>
+python -m pytest tests/test_a2a.py::TestA2AModels -v
+python -m pytest tests/test_a2a.py::TestA2AHandler -v
+python -m pytest tests/test_a2a.py::TestTaskManager -v
+python -m pytest tests/test_a2a.py::TestAgentRegistry -v
+</div></code></pre>
+<h4 id="352-test-coverage">3.5.2 Test Coverage</h4>
+<p>The test suite includes:</p>
+<ul>
+<li><strong>Unit Tests</strong>: Individual component testing</li>
+<li><strong>Integration Tests</strong>: End-to-end workflow testing</li>
+<li><strong>Async Tests</strong>: Asynchronous operation testing</li>
+<li><strong>Error Handling</strong>: Error condition testing</li>
+<li><strong>Model Validation</strong>: Data model testing</li>
+</ul>
+<h3 id="36-a2a-agent-cards">3.6 A2A Agent Cards</h3>
+<p>The system publishes its capabilities through agent cards. There is a main agent card for the RAG system and individual cards for each specialized CoT agent:</p>
+<h4 id="main-rag-agent-card">Main RAG Agent Card</h4>
+<pre class="hljs"><code><div><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;agent_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;agentic_rag_v1&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Agentic RAG System&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.0.0&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Intelligent RAG system with multi-agent reasoning&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;capabilities&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;document.query&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Query documents using RAG with context retrieval&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;input_schema&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> ... <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;output_schema&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> ... <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;agent.query&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Query specialized CoT agents for distributed reasoning&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;input_schema&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;agent_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;planner_agent_v1 | researcher_agent_v1 | reasoner_agent_v1 | synthesizer_agent_v1&quot;</span><span class="hljs-punctuation">,</span>
+        ...
+      <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;output_schema&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> ... <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;endpoints&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;base_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http://localhost:8000&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;authentication&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> ... <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</div></code></pre>
+<h4 id="specialized-agent-cards-1">Specialized Agent Cards</h4>
+<p>Each CoT agent has its own card accessible via agent discovery:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Discover all specialized agents</span>
+curl -X POST http://localhost:8000/a2a \
+  -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+  -d <span class="hljs-string">&#x27;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;agent.discover&quot;, &quot;params&quot;: {&quot;capability&quot;: &quot;agent.query&quot;}, &quot;id&quot;: &quot;1&quot;}&#x27;</span>
+</div></code></pre>
+<p>This returns agent cards for:</p>
+<ul>
+<li><strong>Planner Agent</strong> (<code>planner_agent_v1</code>): Problem decomposition and strategic planning</li>
+<li><strong>Researcher Agent</strong> (<code>researcher_agent_v1</code>): Information gathering from vector stores</li>
+<li><strong>Reasoner Agent</strong> (<code>reasoner_agent_v1</code>): Logical reasoning and analysis</li>
+<li><strong>Synthesizer Agent</strong> (<code>synthesizer_agent_v1</code>): Final answer synthesis</li>
+</ul>
+<h3 id="37-using-a2a-chat-interface-in-gradio">3.7 Using A2A Chat Interface in Gradio</h3>
+<p>The Gradio interface includes an <strong>A2A Chat Interface</strong> tab that allows you to interact with the distributed CoT agents:</p>
+<ol>
+<li><strong>Navigate to A2A Chat Interface tab</strong> in the Gradio UI</li>
+<li><strong>Enable &quot;Use Chain of Thought&quot;</strong> checkbox to activate distributed CoT reasoning</li>
+<li><strong>Ask a question</strong> and watch as it orchestrates through all specialized agents:
+<ul>
+<li>🎯 Planner breaks down the query</li>
+<li>🔍 Researcher gathers information for each step</li>
+<li>🤔 Reasoner applies logical analysis</li>
+<li>📝 Synthesizer combines into final answer</li>
+</ul>
+</li>
+<li><strong>View step-by-step progress</strong> as each agent processes via A2A protocol</li>
+</ol>
+<ul>
+<li>Specialized agents are automatically registered on server startup</li>
+<li>All communication happens via A2A protocol (HTTP + JSON-RPC 2.0)</li>
+</ul>
+<p><strong>Example Query Flow</strong>:</p>
+<pre class="hljs"><code><div>User: &quot;What is machine learning?&quot;
+  ↓ (A2A: agent.query → planner_agent_v1)
+Planner: Creates 4 steps
+  ↓ (A2A: agent.query → researcher_agent_v1) × 4
+Researcher: Gathers info for each step
+  ↓ (A2A: agent.query → reasoner_agent_v1) × 4
+Reasoner: Analyzes each step
+  ↓ (A2A: agent.query → synthesizer_agent_v1)
+Synthesizer: Combines into final answer
+  ↓
+User: Receives comprehensive answer with sources
+</div></code></pre>
+<h3 id="38-benefits-of-a2a-integration">3.8 Benefits of A2A Integration</h3>
+<ol>
+<li><strong>Interoperability</strong>: Seamless communication with other A2A-compliant agents</li>
+<li><strong>Scalability</strong>: Support for complex multi-agent workflows</li>
+<li><strong>Standardization</strong>: Industry-standard communication protocol</li>
+<li><strong>Discovery</strong>: Automatic agent and capability discovery</li>
+<li><strong>Security</strong>: Built-in authentication and authorization</li>
+<li><strong>Future-Proofing</strong>: Compatibility with evolving agent ecosystems</li>
+<li><strong>Distributed Processing</strong>: Each agent can run on separate infrastructure</li>
+<li><strong>Load Balancing</strong>: Distribute workload across multiple servers</li>
+</ol>
+<h3 id="39-configuration">3.9 Configuration</h3>
+<p><strong>A2A Endpoint Configuration</strong> (for distributed deployment):</p>
+<p>Edit <code>config.yaml</code> to specify agent endpoints:</p>
+<pre class="hljs"><code><div><span class="hljs-attr">AGENT_ENDPOINTS:</span>
+  <span class="hljs-attr">planner_url:</span> <span class="hljs-string">http://localhost:8000</span>      <span class="hljs-comment"># or remote server</span>
+  <span class="hljs-attr">researcher_url:</span> <span class="hljs-string">http://localhost:8000</span>   <span class="hljs-comment"># or remote server</span>
+  <span class="hljs-attr">reasoner_url:</span> <span class="hljs-string">http://localhost:8000</span>     <span class="hljs-comment"># or remote server</span>
+  <span class="hljs-attr">synthesizer_url:</span> <span class="hljs-string">http://localhost:8000</span>  <span class="hljs-comment"># or remote server</span>
+</div></code></pre>
+<p><strong>Basic A2A functionality</strong> requires no additional configuration. The system automatically:</p>
+<ul>
+<li>Initializes A2A handlers on startup</li>
+<li>Registers main RAG agent and specialized CoT agents</li>
+<li>Starts task management services</li>
+<li>Enables agent discovery</li>
+<li>Loads agent endpoint URLs from config</li>
+</ul>
+<h3 id="310-troubleshooting">3.10 Troubleshooting</h3>
+<h4 id="common-issues">Common Issues</h4>
+<ol>
+<li><strong>Async Test Failures</strong>: Ensure <code>pytest-asyncio</code> is installed</li>
+<li><strong>Import Errors</strong>: Verify all A2A modules are in the Python path</li>
+<li><strong>Task Timeouts</strong>: Check task manager configuration for long-running tasks</li>
+</ol>
+<h4 id="debug-commands">Debug Commands</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check A2A health</span>
+curl -X GET http://localhost:8000/a2a/health
+
+<span class="hljs-comment"># View agent capabilities</span>
+curl -X GET http://localhost:8000/agent_card
+
+<span class="hljs-comment"># Test basic functionality</span>
+python -c <span class="hljs-string">&quot;from a2a_models import A2ARequest; print(&#x27;A2A models working&#x27;)&quot;</span>
+</div></code></pre>
+<h2 id="ownership">Ownership</h2>
+<p>Inspired from oracle ai development advancement in ai in current days.</p>
+
+</body>
+</html>
